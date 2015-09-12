@@ -1,3 +1,8 @@
 <template name="home">
     {{> textForm }}
+
+  <h1>Texts</h1>
+    {{#each texts}}
+      <p>{{text}} <span class="label label-{{getStyle isHappy}}">{{getStyleLabel isHappy}}</span></p>
+    {{/each}}
 </template>
