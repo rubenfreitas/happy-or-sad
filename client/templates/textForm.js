@@ -17,5 +17,8 @@ Template.textForm.events = {
 			}
 		});
 
+    // Clear form
+    event.target.text.value = "";
+
   }
 };

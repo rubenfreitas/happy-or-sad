@@ -1,8 +1,9 @@
 <template name="home">
-    {{> textForm }}
+  {{> textForm }}
 
-  <h1>Texts</h1>
-    {{#each texts}}
-      <p>{{text}} <span class="label label-{{getStyle isHappy}}">{{getStyleLabel isHappy}}</span></p>
-    {{/each}}
+  <hr>
+
+  {{#if hasTexts}}
+    {{> textsTable}}
+  {{/if}}
 </template>
