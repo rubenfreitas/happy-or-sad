@@ -5,8 +5,8 @@ Template.textForm.events = {
 
     var phrase = event.target.text.value;
 
-    if (!!phrase && phrase.split(' ').length > 2) {
-      throw new Meteor.Error('text', 'You must enter a phrase with at least 3 words!');
+    if (!!phrase && phrase.split(' ').length < 2) {
+      throw new Meteor.Error('text', 'You must enter a phrase with at least 2 words!');
     } else {
       // create the new text
       var newText = {
