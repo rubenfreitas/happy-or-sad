@@ -1,32 +1,27 @@
 Meteor.startup(function () {
 	Meteor.methods({
 	  happyOrSad: function (text) {
-	    console.log('on server, happyOrSad called');
+	    console.log('on server: happyOrSad called');
 
-			if(Texts.find({ text: text.text}).count() === 1){
+			if(Texts.find({ text: text.text }).count() === 1){
 				return;
 			}
 
 			textWords = text.text.replace(/[.,-\/#!$%\^&\*;:{}=\-_`~()]/g,"").split(" ");
 
-			var happy = 0;
-			var sad = 0;
+			var weight = 0;
 
 			textWords.forEach(function(w) {
 				var word = Words.findOne({ word: w });
 
 				if(word) {
-					word.sentiment == "positive" ? happy++ : sad++;
+					word.sentiment == "positive" ? weight++ : weight--;
 				}
 			});
 
-			if(happy > (sad + happy) / 2) {
-				text.isHappy = "true";
-			}
+			console.log("on server: sentiment analysis > { " + weight + " }");
 
-			if(sad > (sad + happy) / 2) {
-				text.isHappy = "false";
-			}
+			text.sentiment = weight;
 
 			Texts.insert(text);
 

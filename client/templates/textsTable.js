@@ -2,20 +2,13 @@ Template.textsTable.helpers({
   texts: function() {
     return Texts.find();
   },
-  getStyle: function(isHappy) {
-    switch (isHappy) {
-        case "true" : {
-            return 'success';
-        }
-        break;
-        case "false" : {
-            return 'danger';
-        }
-        break;
-        default : {
-          return 'warning';
-        }
-    }
+  getStyle: function(sentiment) {
+    if(sentiment > 0)
+      return 'success';
+    else if (sentiment < 0)
+      return 'danger';
+    else
+      return 'warning';
   }
 });
 

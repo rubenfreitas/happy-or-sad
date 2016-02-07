@@ -11,7 +11,7 @@ Template.textForm.events = {
       // create the new text
       var newText = {
         text: phrase,
-        isHappy: "unknown",
+        sentiment: 0,
         createdAt: new Date()
       };
 
